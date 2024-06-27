@@ -1,9 +1,37 @@
-import { Home } from 'lucide-react'
+import HeaderBox from '@/components/HeaderBox';
+import RightSidebar from '@/components/RightSidebar';
+import TotalBalanceBox from '@/components/TotalBalanceBox';
 import React from 'react'
 
-const page = () => {
+const Home = () => {
+  const loggedIn = { firstName: 'Thiago', lastName: 'Marques', email: 'tthiagoboia2911@gmail.com'};
   return (
-    <div>Home</div>
+    <section className="home">
+      <div className="home-content">
+        <header className="home-header">
+          <HeaderBox 
+            type="greeting"
+            title="Welcome"
+            user={loggedIn?.firstName || 'Guest'}
+            subtext="Access and manage your account and transactions efficiently."
+          />
+
+          <TotalBalanceBox
+            accounts={[]}
+            totalBanks={1}
+            totalCurrentBalance={1250.35}
+          />
+        </header>
+
+        RECENT TRANSACTIONS
+      </div>
+      <RightSidebar 
+       user={loggedIn}
+       transactions={[]}
+       banks={[{ currentBalance: 123.50 }, { currentBalance: 650.00 }]}
+      />
+    </section>
+
   )
 }
 
